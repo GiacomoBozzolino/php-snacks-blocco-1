@@ -1,21 +1,24 @@
 <?php
 $display= false;
 $results = false;
-$instruction = 'inserisci i tuoi dati';
+$instruction = 'Per favore, inserisci i tuoi dati.';
 
     // creo una condizione per le stringhe diverse da valore null
     if(isset($_GET['name']) && isset($_GET['email']) && isset($_GET['age'])){
         $name = $_GET['name'];
         $email = $_GET['email'];
         $age = $_GET['age'];
-        $display = true;
+        // aggiunto controllo se i campi sono vuoti
+        if(($_GET['name']!= '' ) && ($_GET['email'] != '') && ($_GET['age'] != '')){
+            $display = true;
 
-        if ((strlen($name) > 3) && str_contains($email, '@') && str_contains($email, '.') && is_numeric($age) ) {
-            $results = true; 
+            // aggiungo il controllo per le condizioni con cui mandare il messaggio
+            if ((strlen($name) > 3) && str_contains($email, '@') && str_contains($email, '.') && is_numeric($age) ) {
+                $results = true; 
+            }
         }
-    }
-    // aggiungo il controllo per le condizioni con cui mandare il messaggio
 
+    }
 ?>
 
 
@@ -37,6 +40,7 @@ $instruction = 'inserisci i tuoi dati';
     
     <div >
         <?php if ($display === true) { 
+            // uso un operatore ternario per stampare il messaggio a seconda della condizione
             echo ($results === true) ? 'Accesso Consentito' : 'Accesso Negato';
         }
         else { 
@@ -44,7 +48,6 @@ $instruction = 'inserisci i tuoi dati';
 
         };
         ?>
-        <!-- uso un operatore ternario per stampare il messaggio a seconda della condizione -->
             
     </div>
 </body>
