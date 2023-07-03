@@ -1,7 +1,7 @@
 <?php
-$display= false;
-$results = false;
-$instruction = 'Per favore, inserisci i tuoi dati.';
+    $display= false;
+    $results = false;
+    $instruction = 'Per favore, inserisci i tuoi dati.';
 
     // creo una condizione per le stringhe diverse da valore null
     if(isset($_GET['name']) && isset($_GET['email']) && isset($_GET['age'])){
@@ -11,7 +11,6 @@ $instruction = 'Per favore, inserisci i tuoi dati.';
         // aggiunto controllo se i campi sono vuoti
         if(($_GET['name']!= '' ) && ($_GET['email'] != '') && ($_GET['age'] != '')){
             $display = true;
-
             // aggiungo il controllo per le condizioni con cui mandare il messaggio
             if ((strlen($name) > 3) && str_contains($email, '@') && str_contains($email, '.') && is_numeric($age) ) {
                 $results = true; 
